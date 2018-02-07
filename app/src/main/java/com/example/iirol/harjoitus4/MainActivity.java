@@ -5,11 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    private LinearLayout laskuriPaneeli;
+    private LinearLayout historiaPaneeli;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,13 +21,12 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_laskuri:
-                    mTextMessage.setText(R.string.title_home);
+                    laskuriPaneeli.setVisibility(View.VISIBLE);
+                    historiaPaneeli.setVisibility(View.GONE);
                     return true;
                 case R.id.navigation_historia:
-                    mTextMessage.setText(R.string.title_history);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    laskuriPaneeli.setVisibility(View.GONE);
+                    historiaPaneeli.setVisibility(View.VISIBLE);
                     return true;
             }
             return false;
@@ -36,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
+        this.laskuriPaneeli = (LinearLayout)findViewById(R.id.laskuripaneeli);
+        this.historiaPaneeli = (LinearLayout)findViewById(R.id.historiapaneeli);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
