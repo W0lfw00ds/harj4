@@ -7,4 +7,15 @@
     android:layout_height="match_parent"
     tools:context="com.example.iirol.harjoitus4.Logi">
 
+    <!-- Logi-taulukko -->
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/logiTableLayout"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- Logirivit tulevat tänne -->
+
+    </TableLayout>
+
 </android.support.constraint.ConstraintLayout>

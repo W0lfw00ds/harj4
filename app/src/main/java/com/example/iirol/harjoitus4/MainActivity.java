@@ -1,5 +1,6 @@
 package com.example.iirol.harjoitus4;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,7 +9,10 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -152,7 +156,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Lisää logiin
-        logi.add(luku1 + " " + operaattori + " " + luku2 + " = " + tulos);
+        String paivamaara = new SimpleDateFormat("dd-MM-yyyy  HH:mm:ss", Locale.getDefault()).format(new Date());
+        logi.add(paivamaara + ": " + luku1 + " " + operaattori + " " + luku2 + " = " + tulos);
 
         // Aseta tulos tuloskenttään
         tulosKentta.setText(String.valueOf(tulos));
@@ -179,5 +184,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void naytalogi() {
 
+        // Luo uusi bundle mihin kootaan välitettävät parametrit toiselle activitylle
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("logit", this.logi); //to Lisää ArrayList<String> parametriksi
+
+        // Luo uusi intent millä siirrytään activitystä toiseen, ja lisää bundle siihen mukaan
+        Intent intent = new Intent(this, Logi.class);
+        intent.putExtras(bundle);
+
+        // Siirry toiseen activityyn
+        this.startActivity(intent);
     }
 }
