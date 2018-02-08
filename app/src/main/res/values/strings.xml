@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">"Laskuri"</string>
+    <string name="app_name">"Harjoitus 4"</string>
+    <string name="title_activity_logi">Logi</string>
 </resources>

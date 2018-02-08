@@ -1,48 +1,174 @@
 package com.example.iirol.harjoitus4;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TableLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout laskuriPaneeli;
-    private LinearLayout historiaPaneeli;
+    // Paneeli
+    private TableLayout laskuriPaneeli;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    // Plus
+    private EditText plus_luku1;
+    private TextView plus_teksti;
+    private EditText plus_luku2;
+    private Button plus_nappi;
+    private TextView plus_tulos;
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_laskuri:
-                    laskuriPaneeli.setVisibility(View.VISIBLE);
-                    historiaPaneeli.setVisibility(View.GONE);
-                    return true;
-                case R.id.navigation_historia:
-                    laskuriPaneeli.setVisibility(View.GONE);
-                    historiaPaneeli.setVisibility(View.VISIBLE);
-                    return true;
-            }
-            return false;
-        }
-    };
+    // Miinus
+    private EditText miinus_luku1;
+    private TextView miinus_teksti;
+    private EditText miinus_luku2;
+    private Button miinus_nappi;
+    private TextView miinus_tulos;
+
+    // Kerto
+    private EditText kerto_luku1;
+    private TextView kerto_teksti;
+    private EditText kerto_luku2;
+    private Button kerto_nappi;
+    private TextView kerto_tulos;
+
+    // Jako
+    private EditText jako_luku1;
+    private TextView jako_teksti;
+    private EditText jako_luku2;
+    private Button jako_nappi;
+    private TextView jako_tulos;
+
+    // Toiminnot
+    private Button tyhjennakaikki_nappi;
+    private Button naytalogi_nappi;
+
+    // Logi
+    private ArrayList<String> logi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.laskuriPaneeli = (LinearLayout)findViewById(R.id.laskuripaneeli);
-        this.historiaPaneeli = (LinearLayout)findViewById(R.id.historiapaneeli);
+        this.laskuriPaneeli = findViewById(R.id.laskuripaneeli);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        this.plus_luku1 = findViewById(R.id.plus_luku1);
+        this.plus_teksti = findViewById(R.id.plus_teksti);
+        this.plus_luku2 = findViewById(R.id.plus_luku2);
+        this.plus_nappi = findViewById(R.id.plus_nappi);
+        this.plus_tulos = findViewById(R.id.plus_tulos);
+        this.plus_nappi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                laske(Double.valueOf(MainActivity.this.plus_luku1.getText().toString()), Double.valueOf(MainActivity.this.plus_luku2.getText().toString()), MainActivity.this.plus_nappi.getText().toString(), MainActivity.this.plus_tulos);
+            }
+        });
+
+        // Miinus
+        this.miinus_luku1 = findViewById(R.id.miinus_luku1);
+        this.miinus_teksti = findViewById(R.id.miinus_teksti);
+        this.miinus_luku2 = findViewById(R.id.miinus_luku2);
+        this.miinus_nappi = findViewById(R.id.miinus_nappi);
+        this.miinus_tulos = findViewById(R.id.miinus_tulos);
+        this.miinus_nappi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                laske(Double.valueOf(MainActivity.this.miinus_luku1.getText().toString()), Double.valueOf(MainActivity.this.miinus_luku2.getText().toString()), MainActivity.this.miinus_nappi.getText().toString(), MainActivity.this.miinus_tulos);
+            }
+        });
+
+        // Kerto
+        this.kerto_luku1 = findViewById(R.id.kerto_luku1);
+        this.kerto_teksti = findViewById(R.id.kerto_teksti);
+        this.kerto_luku2 = findViewById(R.id.kerto_luku2);
+        this.kerto_nappi = findViewById(R.id.kerto_nappi);
+        this.kerto_tulos = findViewById(R.id.kerto_tulos);
+        this.kerto_nappi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                laske(Double.valueOf(MainActivity.this.kerto_luku1.getText().toString()), Double.valueOf(MainActivity.this.kerto_luku2.getText().toString()), MainActivity.this.kerto_nappi.getText().toString(), MainActivity.this.kerto_tulos);
+            }
+        });
+
+        // Jako
+        this.jako_luku1 = findViewById(R.id.jako_luku1);
+        this.jako_teksti = findViewById(R.id.jako_teksti);
+        this.jako_luku2 = findViewById(R.id.jako_luku2);
+        this.jako_nappi = findViewById(R.id.jako_nappi);
+        this.jako_tulos = findViewById(R.id.jako_tulos);
+        this.jako_nappi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                laske(Double.valueOf(MainActivity.this.jako_luku1.getText().toString()), Double.valueOf(MainActivity.this.jako_luku2.getText().toString()), MainActivity.this.jako_nappi.getText().toString(), MainActivity.this.jako_tulos);
+            }
+        });
+
+        // Toiminnot
+        this.tyhjennakaikki_nappi = findViewById(R.id.tyhjennakaikki_nappi);
+        this.tyhjennakaikki_nappi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tyhjenna();
+            }
+        });
+
+        this.naytalogi_nappi = findViewById(R.id.naytalogi_nappi);
+
+        this.logi = new ArrayList<>();
+    }
+
+    private void laske(double luku1, double luku2, String operaattori, TextView tulosKentta) {
+
+        double tulos = 0;
+
+        switch (operaattori) {
+
+            case "+":
+                tulos = (luku1 + luku2);
+                break;
+
+            case "-":
+                tulos = (luku1 - luku2);
+                break;
+
+            case "x":
+                tulos = (luku1 * luku2);
+                break;
+
+            case "/":
+                tulos = (luku1 / luku2);
+                break;
+        }
+
+        // Lisää logiin
+        logi.add(luku1 + " " + operaattori + " " + luku2 + " = " + tulos);
+
+        // Aseta tulos tuloskenttään
+        tulosKentta.setText(String.valueOf(tulos));
+    }
+
+    private void tyhjenna() {
+
+        this.plus_luku1.setText("0");
+        this.plus_luku2.setText("0");
+        this.plus_tulos.setText("0");
+
+        this.miinus_luku1.setText("0");
+        this.miinus_luku2.setText("0");
+        this.miinus_tulos.setText("0");
+
+        this.kerto_luku1.setText("0");
+        this.kerto_luku2.setText("0");
+        this.kerto_tulos.setText("0");
+
+        this.jako_luku1.setText("0");
+        this.jako_luku2.setText("0");
+        this.jako_tulos.setText("0");
     }
 
 }

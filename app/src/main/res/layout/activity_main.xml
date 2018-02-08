@@ -9,110 +9,228 @@
     tools:context="com.example.iirol.harjoitus4.MainActivity">
 
     <!-- Laskurisivu -->
-    <TableLayout
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/laskuripaneeli"
-        android:orientation="vertical"
+        android:visibility="visible"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/border"
-        android:visibility="visible">
+        android:layout_height="match_parent" >
 
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/tableLayout1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <!-- 1. Row -->
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <EditText
-                    android:id="@+id/plus_luku1"
-                    android:text="0"
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight=".25"/>
-
-                <TextView
-                    android:id="@+id/laskuri_teksti"
-                    android:layout_width="0dp"
-                    android:layout_weight=".05"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:text="+"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/plus_luku2"
-                    android:text="0"
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight=".25"
-                    android:inputType="text"/>
-
-                <Button
-                    android:id="@+id/plus_nappi"
-                    android:text="Laske"
-                    android:layout_width="0dp"
-                    android:layout_weight=".25"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/plus_tulos"
-                    android:text="0"
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight=".20"
-                    android:textAlignment="center"/>
-
-            </TableRow>
-
-        </TableLayout>
-
-    </LinearLayout>
-
-    <!-- Historiasivu -->
-    <LinearLayout
-        android:id="@+id/historiapaneeli"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/border"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/historia_teksti"
+        <!-- 1. rivi: PLUS -->
+        <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="historiateksti"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:padding="5dip">
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/plus_luku1"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"/>
 
-    <!-- Navigointipalkki -->
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+            <TextView
+                android:id="@+id/plus_teksti"
+                android:layout_width="0dp"
+                android:layout_weight=".05"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/plus_luku2"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:inputType="text"/>
+
+            <Button
+                android:id="@+id/plus_nappi"
+                android:text="Laske"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/plus_tulos"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".20"
+                android:textAlignment="center"/>
+
+        </TableRow>
+
+        <!-- 2. rivi: miinus -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip">
+
+            <EditText
+                android:id="@+id/miinus_luku1"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"/>
+
+            <TextView
+                android:id="@+id/miinus_teksti"
+                android:layout_width="0dp"
+                android:layout_weight=".05"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/miinus_luku2"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:inputType="text"/>
+
+            <Button
+                android:id="@+id/miinus_nappi"
+                android:text="Laske"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/miinus_tulos"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".20"
+                android:textAlignment="center"/>
+
+        </TableRow>
+
+        <!-- 3. rivi: kerto -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip">
+
+            <EditText
+                android:id="@+id/kerto_luku1"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"/>
+
+            <TextView
+                android:id="@+id/kerto_teksti"
+                android:layout_width="0dp"
+                android:layout_weight=".05"
+                android:layout_height="wrap_content"
+                android:text="x"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/kerto_luku2"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:inputType="text"/>
+
+            <Button
+                android:id="@+id/kerto_nappi"
+                android:text="Laske"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/kerto_tulos"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".20"
+                android:textAlignment="center"/>
+
+        </TableRow>
+
+        <!-- 4. rivi: jako -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip">
+
+            <EditText
+                android:id="@+id/jako_luku1"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"/>
+
+            <TextView
+                android:id="@+id/jako_teksti"
+                android:layout_width="0dp"
+                android:layout_weight=".05"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/jako_luku2"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:inputType="text"/>
+
+            <Button
+                android:id="@+id/jako_nappi"
+                android:text="Laske"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/jako_tulos"
+                android:text="0"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".20"
+                android:textAlignment="center"/>
+
+        </TableRow>
+
+        <!-- 4. rivi: toimintonapit -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip">
+
+            <Button
+                android:id="@+id/tyhjennakaikki_nappi"
+                android:text="Tyhjennä kaikki"
+                android:layout_width="0dp"
+                android:layout_weight=".50"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/naytalogi_nappi"
+                android:text="Näytä logi"
+                android:layout_width="0dp"
+                android:layout_weight=".50"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <!-- Historiasivu -->
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/historiapaneeli"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </TableLayout>
 
 </android.support.constraint.ConstraintLayout>
