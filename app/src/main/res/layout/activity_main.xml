@@ -23,7 +23,8 @@
 
             <EditText
                 android:id="@+id/plus_luku1"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight=".25"/>
@@ -38,11 +39,11 @@
 
             <EditText
                 android:id="@+id/plus_luku2"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_weight=".25"
-                android:inputType="text"/>
+                android:layout_weight=".25"/>
 
             <Button
                 android:id="@+id/plus_nappi"
@@ -51,9 +52,11 @@
                 android:layout_weight=".25"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <EditText
                 android:id="@+id/plus_tulos"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
+                android:editable="false"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight=".20"
@@ -69,7 +72,8 @@
 
             <EditText
                 android:id="@+id/miinus_luku1"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight=".25"/>
@@ -84,11 +88,11 @@
 
             <EditText
                 android:id="@+id/miinus_luku2"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_weight=".25"
-                android:inputType="text"/>
+                android:layout_weight=".25"/>
 
             <Button
                 android:id="@+id/miinus_nappi"
@@ -97,9 +101,11 @@
                 android:layout_weight=".25"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <EditText
                 android:id="@+id/miinus_tulos"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
+                android:editable="false"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight=".20"
@@ -115,7 +121,8 @@
 
             <EditText
                 android:id="@+id/kerto_luku1"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight=".25"/>
@@ -130,11 +137,11 @@
 
             <EditText
                 android:id="@+id/kerto_luku2"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_weight=".25"
-                android:inputType="text"/>
+                android:layout_weight=".25"/>
 
             <Button
                 android:id="@+id/kerto_nappi"
@@ -143,9 +150,11 @@
                 android:layout_weight=".25"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <EditText
                 android:id="@+id/kerto_tulos"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
+                android:editable="false"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight=".20"
@@ -161,7 +170,8 @@
 
             <EditText
                 android:id="@+id/jako_luku1"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight=".25"/>
@@ -176,11 +186,11 @@
 
             <EditText
                 android:id="@+id/jako_luku2"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_weight=".25"
-                android:inputType="text"/>
+                android:layout_weight=".25"/>
 
             <Button
                 android:id="@+id/jako_nappi"
@@ -189,9 +199,11 @@
                 android:layout_weight=".25"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <EditText
                 android:id="@+id/jako_tulos"
-                android:text="0"
+                android:hint="0"
+                android:inputType="number"
+                android:editable="false"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight=".20"
@@ -199,7 +211,7 @@
 
         </TableRow>
 
-        <!-- 4. rivi: toimintonapit -->
+        <!-- 5. rivi: toimintonapit -->
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -220,16 +232,6 @@
                 android:layout_height="wrap_content" />
 
         </TableRow>
-
-    </TableLayout>
-
-    <!-- Historiasivu -->
-
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/historiapaneeli"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
     </TableLayout>
 

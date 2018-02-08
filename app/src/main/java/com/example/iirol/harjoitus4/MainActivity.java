@@ -20,28 +20,28 @@ public class MainActivity extends AppCompatActivity {
     private TextView plus_teksti;
     private EditText plus_luku2;
     private Button plus_nappi;
-    private TextView plus_tulos;
+    private EditText plus_tulos;
 
     // Miinus
     private EditText miinus_luku1;
     private TextView miinus_teksti;
     private EditText miinus_luku2;
     private Button miinus_nappi;
-    private TextView miinus_tulos;
+    private EditText miinus_tulos;
 
     // Kerto
     private EditText kerto_luku1;
     private TextView kerto_teksti;
     private EditText kerto_luku2;
     private Button kerto_nappi;
-    private TextView kerto_tulos;
+    private EditText kerto_tulos;
 
     // Jako
     private EditText jako_luku1;
     private TextView jako_teksti;
     private EditText jako_luku2;
     private Button jako_nappi;
-    private TextView jako_tulos;
+    private EditText jako_tulos;
 
     // Toiminnot
     private Button tyhjennakaikki_nappi;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         this.plus_nappi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                laske(Double.valueOf(MainActivity.this.plus_luku1.getText().toString()), Double.valueOf(MainActivity.this.plus_luku2.getText().toString()), MainActivity.this.plus_nappi.getText().toString(), MainActivity.this.plus_tulos);
+                laske(Integer.valueOf(MainActivity.this.plus_luku1.getText().toString()), Integer.valueOf(MainActivity.this.plus_luku2.getText().toString()), MainActivity.this.plus_teksti.getText().toString(), MainActivity.this.plus_tulos);
             }
         });
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         this.miinus_nappi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                laske(Double.valueOf(MainActivity.this.miinus_luku1.getText().toString()), Double.valueOf(MainActivity.this.miinus_luku2.getText().toString()), MainActivity.this.miinus_nappi.getText().toString(), MainActivity.this.miinus_tulos);
+                laske(Integer.valueOf(MainActivity.this.miinus_luku1.getText().toString()), Integer.valueOf(MainActivity.this.miinus_luku2.getText().toString()), MainActivity.this.miinus_teksti.getText().toString(), MainActivity.this.miinus_tulos);
             }
         });
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         this.kerto_nappi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                laske(Double.valueOf(MainActivity.this.kerto_luku1.getText().toString()), Double.valueOf(MainActivity.this.kerto_luku2.getText().toString()), MainActivity.this.kerto_nappi.getText().toString(), MainActivity.this.kerto_tulos);
+                laske(Integer.valueOf(MainActivity.this.kerto_luku1.getText().toString()), Integer.valueOf(MainActivity.this.kerto_luku2.getText().toString()), MainActivity.this.kerto_teksti.getText().toString(), MainActivity.this.kerto_tulos);
             }
         });
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         this.jako_nappi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                laske(Double.valueOf(MainActivity.this.jako_luku1.getText().toString()), Double.valueOf(MainActivity.this.jako_luku2.getText().toString()), MainActivity.this.jako_nappi.getText().toString(), MainActivity.this.jako_tulos);
+                laske(Integer.valueOf(MainActivity.this.jako_luku1.getText().toString()), Integer.valueOf(MainActivity.this.jako_luku2.getText().toString()), MainActivity.this.jako_teksti.getText().toString(), MainActivity.this.jako_tulos);
             }
         });
 
@@ -118,13 +118,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         this.naytalogi_nappi = findViewById(R.id.naytalogi_nappi);
+        this.naytalogi_nappi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                naytalogi();
+            }
+        });
 
         this.logi = new ArrayList<>();
     }
 
-    private void laske(double luku1, double luku2, String operaattori, TextView tulosKentta) {
+    private void laske(int luku1, int luku2, String operaattori, TextView tulosKentta) {
 
-        double tulos = 0;
+        int tulos = 0;
 
         switch (operaattori) {
 
@@ -141,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case "/":
-                tulos = (luku1 / luku2);
+                tulos = luku1 / luku2;
                 break;
         }
 
@@ -154,21 +160,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void tyhjenna() {
 
-        this.plus_luku1.setText("0");
-        this.plus_luku2.setText("0");
-        this.plus_tulos.setText("0");
+        this.plus_luku1.setText("");
+        this.plus_luku2.setText("");
+        this.plus_tulos.setText("");
 
-        this.miinus_luku1.setText("0");
-        this.miinus_luku2.setText("0");
-        this.miinus_tulos.setText("0");
+        this.miinus_luku1.setText("");
+        this.miinus_luku2.setText("");
+        this.miinus_tulos.setText("");
 
-        this.kerto_luku1.setText("0");
-        this.kerto_luku2.setText("0");
-        this.kerto_tulos.setText("0");
+        this.kerto_luku1.setText("");
+        this.kerto_luku2.setText("");
+        this.kerto_tulos.setText("");
 
-        this.jako_luku1.setText("0");
-        this.jako_luku2.setText("0");
-        this.jako_tulos.setText("0");
+        this.jako_luku1.setText("");
+        this.jako_luku2.setText("");
+        this.jako_tulos.setText("");
     }
 
+    private void naytalogi() {
+
+    }
 }
